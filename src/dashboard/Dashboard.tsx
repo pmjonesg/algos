@@ -61,20 +61,20 @@ class Dashboard extends React.Component<IProps> {
             onChange={this.handleChange(algo.title)}
           >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.title}>{algo.title}</Typography>
+              <Typography variant="h5" gutterBottom={true}>
+                {algo.title}
+              </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography className={classes.secondaryHeading}>
-                {algo.algorithms && algo.algorithms.length
-                  ? algo.algorithms.map(algorithm => {
-                      return (
-                        <Typography className={classes.secondaryHeading}>
-                          {algorithm.title}
-                        </Typography>
-                      );
-                    })
-                  : "To be implemented"}
-              </Typography>
+              {algo.algorithms && algo.algorithms.length
+                ? algo.algorithms.map(algorithm => {
+                    return (
+                      <Typography className={classes.secondaryHeading}>
+                        {algorithm.title}
+                      </Typography>
+                    );
+                  })
+                : "To be implemented"}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         ))}
