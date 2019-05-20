@@ -27,3 +27,4 @@ yarn-error.log*
 # ci/cd
 *travis.log
 *input.txt
+.scannerwork/*
