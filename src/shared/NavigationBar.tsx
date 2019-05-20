@@ -27,7 +27,7 @@ const NavigationBar: React.FC<IProps> = props => {
       <AppBar position="static">
         <ToolBar>
           <Typography
-            variant="h6"
+            variant="h5"
             color="inherit"
             className={props.classes.grow}
           >

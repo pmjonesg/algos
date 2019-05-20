@@ -14,12 +14,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
       "actions/*": ["store/actions/*"],
       "selectors/*": ["store/selectors/*"],
       "reducers/*": ["store/reducers/*"],
-      "models/*": ["models/*"]
+      "models/*": ["models/*"],
+      "dashboard/*": ["dashboard/*"],
+      "algorithms/*": ["algorithms/*"]
     }
   },
   "include": ["src"]
