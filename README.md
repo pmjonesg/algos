@@ -1,4 +1,5 @@
 ![Travis (.com)](https://img.shields.io/travis/com/pmjonesg/algos.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pmjonesg_algos&metric=alert_status)](https://sonarcloud.io/dashboard?id=pmjonesg_algos)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
