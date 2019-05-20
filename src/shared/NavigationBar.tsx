@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
+import { createStyles, withStyles } from "@material-ui/core/styles";
 
 const styles = createStyles({
   root: {

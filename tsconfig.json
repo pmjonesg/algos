@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,9 +13,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "src",
+    "paths": {
+      "actions/*": ["store/actions/*"],
+      "selectors/*": ["store/selectors/*"],
+      "reducers/*": ["store/reducers/*"],
+      "models/*": ["models/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

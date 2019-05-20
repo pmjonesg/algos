@@ -1,13 +1,17 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import {
   Typography,
   ExpansionPanel,
-  ExpansionPanelActions,
   ExpansionPanelDetails,
   ExpansionPanelSummary
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { withStyles } from "@material-ui/core/styles";
+
+import Summary from "./Summary";
+
+// Models
+import { Algorithm } from "models";
 
 const styles = {
   card: {
@@ -18,20 +22,30 @@ const styles = {
   }
 };
 
-type IState = { expanded: string };
-type IProps = { classes: any };
+interface IState {
+  expanded: string;
+}
+interface IProps {
+  classes: any;
+}
 
-const algos = [
+interface AlgorithmItem {
+  title: string;
+  algorithms?: Algorithm[];
+}
+
+const algos: AlgorithmItem[] = [
   {
     title: "Sorting and Order Statistics",
     algorithms: [
       {
+        id: 0,
         title: "Heapsort"
       }
     ]
   },
   { title: "Data Structures" },
-  { title: "Advanced Desgin and Analysis Techniques" },
+  { title: "Advanced Design and Analysis Techniques" },
   { title: "Advanced Data Structures" },
   { title: "Graph Algorithms" },
   { title: "Selected Topics" }
@@ -39,10 +53,6 @@ const algos = [
 
 class Dashboard extends React.Component<IProps> {
   state: IState = { expanded: "" };
-
-  constructor(props: IProps) {
-    super(props);
-  }
 
   handleChange = (panel: string) => (event: any, expanded: any) => {
     this.setState({
@@ -53,6 +63,7 @@ class Dashboard extends React.Component<IProps> {
   render() {
     const { classes } = this.props;
     const { expanded } = this.state;
+
     return (
       <React.Fragment>
         {algos.map(algo => (
@@ -67,13 +78,13 @@ class Dashboard extends React.Component<IProps> {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               {algo.algorithms && algo.algorithms.length
-                ? algo.algorithms.map(algorithm => {
-                    return (
-                      <Typography className={classes.secondaryHeading}>
-                        {algorithm.title}
-                      </Typography>
-                    );
-                  })
+                ? algo.algorithms.map(algorithm => (
+                    <Summary
+                      key={algorithm.id}
+                      classes={classes}
+                      algorithm={algorithm}
+                    />
+                  ))
                 : "To be implemented"}
             </ExpansionPanelDetails>
           </ExpansionPanel>

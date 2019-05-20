@@ -6,5 +6,11 @@ install:
 cache:
   directories:
     - node_modules
-script:
+addons:
+  sonarcloud:
+    organization: "pmjonesg-github" # the key of the org you chose at step #3
+    token:
+      secure: "Kfs6VyzNK0j+PR0WtCbCipGCnfOn8ydTy+t31mnkfKOOWK0ppSWJ2PxzziPH1RglpdhNuxQJfsLfO5soeVK47GDQTpuybPaDU64P71EFGQjlFXIDc1XiNDNKM0n2Za+44QOQPDB6yBnhI3o1yTX88DTOJ7j4HvMDMBTD+Tqko5phyfWiUjDEzCYYpI3W6MJ39ZEzCbq/EDnDkMVgU4QmjQF3j550VBuA7mUeyggqAoOHo42aOvba2oJa+wOuVCdGhQv9sZqnL1IuuCNkGguaMKJEFQDMZ7x2Aw7f2+KErtpR5WO0Vtk5EQ9WqTGZQMDF5egyJZkGvXL4npG3nfH3mjQr6EkZJHYn8Oo/T9v6oyw3KMKSLMLgcG6rBI2yg/m+8SDQ7ygUUOL910/Tm3JGRhQZcf9riYty28/W0+TLmELiFwXnmcD28dnMt3UGTzW5AwFEmgxSu/fDLAlTP7AsiraVCmi3piplpEa/fA99FOnIIJLMWiy8QxMZp/vRX4dbZtTfckcYvLLJ0Gf6XoTR4hqD8OGsU/B/ivoZMWCsaHNkHsi5JwhQcvlAaOA9ZrP8k6/Pbnhc4LJ5p8C5Gjr0NRJJ4iD+xFqmgIh5tL3O0MZT2muiOUO89KLAwRU0ohDPF9VdYgXmJOFBxsuNPOwpQ4p2KlGzyN+BYVTjsGt95zE=" # encrypted value of your token
+cript:
   - npm test
+  - sonar-scanner

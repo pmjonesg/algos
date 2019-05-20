@@ -23,3 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+# ci/cd
+*travis.log
+*input.txt
