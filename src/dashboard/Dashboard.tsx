@@ -1,26 +1,26 @@
-import React from "react";
-import {
-  Typography,
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { withStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { Typography, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@material-ui/styles';
 
-import Summary from "./Summary";
+import Summary from './Summary';
 
 // Models
-import { Algorithm } from "models";
+import { Algorithm } from 'models';
 
 const styles = {
   card: {
-    minWidth: 275
+    minWidth: 275,
   },
   title: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 };
+
+const StyledExpansionPanelDetails = styled(ExpansionPanelDetails)({
+  display: 'block',
+});
 
 interface IState {
   expanded: string;
@@ -36,27 +36,28 @@ interface AlgorithmItem {
 
 const algos: AlgorithmItem[] = [
   {
-    title: "Sorting and Order Statistics",
+    title: 'Sorting and Order Statistics',
     algorithms: [
       {
         id: 0,
-        title: "Heapsort"
-      }
-    ]
+        url: '/algorithms/heapsort',
+        title: 'Heapsort',
+      },
+    ],
   },
-  { title: "Data Structures" },
-  { title: "Advanced Design and Analysis Techniques" },
-  { title: "Advanced Data Structures" },
-  { title: "Graph Algorithms" },
-  { title: "Selected Topics" }
+  { title: 'Data Structures' },
+  { title: 'Advanced Design and Analysis Techniques' },
+  { title: 'Advanced Data Structures' },
+  { title: 'Graph Algorithms' },
+  { title: 'Selected Topics' },
 ];
 
 class Dashboard extends React.Component<IProps> {
-  state: IState = { expanded: "" };
+  state: IState = { expanded: '' };
 
   handleChange = (panel: string) => (event: any, expanded: any) => {
     this.setState({
-      expanded: expanded ? panel : ""
+      expanded: expanded ? panel : '',
     });
   };
 
@@ -64,33 +65,20 @@ class Dashboard extends React.Component<IProps> {
     const { classes } = this.props;
     const { expanded } = this.state;
 
-    return (
-      <React.Fragment>
-        {algos.map(algo => (
-          <ExpansionPanel
-            expanded={expanded === algo.title}
-            onChange={this.handleChange(algo.title)}
-          >
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="h5" gutterBottom={true}>
-                {algo.title}
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              {algo.algorithms && algo.algorithms.length
-                ? algo.algorithms.map(algorithm => (
-                    <Summary
-                      key={algorithm.id}
-                      classes={classes}
-                      algorithm={algorithm}
-                    />
-                  ))
-                : "To be implemented"}
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        ))}
-      </React.Fragment>
-    );
+    return algos.map(algo => (
+      <ExpansionPanel key={algo.title} expanded={expanded === algo.title} onChange={this.handleChange(algo.title)}>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h5" gutterBottom={true}>
+            {algo.title}
+          </Typography>
+        </ExpansionPanelSummary>
+        <StyledExpansionPanelDetails classes={classes.panelDetails}>
+          {algo.algorithms && algo.algorithms.length
+            ? algo.algorithms.map(algorithm => <Summary key={algorithm.id} algorithm={algorithm} />)
+            : 'To be implemented'}
+        </StyledExpansionPanelDetails>
+      </ExpansionPanel>
+    ));
   }
 }
 
