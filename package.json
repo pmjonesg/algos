@@ -39,7 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-report": "react-scripts test --coverage",
+    "test-report": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
     "now-build": "react-scripts build"
   },
