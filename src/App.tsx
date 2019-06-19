@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import "./App.css";
-import "typeface-roboto";
+import './App.css';
+import 'typeface-roboto';
 
-import NavigationBar from "./shared/NavigationBar";
-import AppRouter from "./Router";
+import NavigationBar from './shared/NavigationBar';
+import AppRouter from './AppRouter';
 
 const App: React.FC = () => {
   return (

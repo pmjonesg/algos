@@ -65,20 +65,24 @@ class Dashboard extends React.Component<IProps> {
     const { classes } = this.props;
     const { expanded } = this.state;
 
-    return algos.map(algo => (
-      <ExpansionPanel key={algo.title} expanded={expanded === algo.title} onChange={this.handleChange(algo.title)}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h5" gutterBottom={true}>
-            {algo.title}
-          </Typography>
-        </ExpansionPanelSummary>
-        <StyledExpansionPanelDetails classes={classes.panelDetails}>
-          {algo.algorithms && algo.algorithms.length
-            ? algo.algorithms.map(algorithm => <Summary key={algorithm.id} algorithm={algorithm} />)
-            : 'To be implemented'}
-        </StyledExpansionPanelDetails>
-      </ExpansionPanel>
-    ));
+    return (
+      <div data-testid="dashboard">
+        {algos.map(algo => (
+          <ExpansionPanel key={algo.title} expanded={expanded === algo.title} onChange={this.handleChange(algo.title)}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="h5" gutterBottom={true}>
+                {algo.title}
+              </Typography>
+            </ExpansionPanelSummary>
+            <StyledExpansionPanelDetails classes={classes.panelDetails}>
+              {algo.algorithms && algo.algorithms.length
+                ? algo.algorithms.map(algorithm => <Summary key={algorithm.id} algorithm={algorithm} />)
+                : 'To be implemented'}
+            </StyledExpansionPanelDetails>
+          </ExpansionPanel>
+        ))}
+      </div>
+    );
   }
 }
 
